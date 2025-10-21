@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { MODERATE_DEBOUNCE_MS } from '@/constants/debounce';
 import { STRING_KEYS } from '@/constants/localization';
 
+import { copyToClipboard } from '@/lib/copy';
+
 import { useStringGetter } from './useStringGetter';
 
 export const useCopyValue = ({ value, onCopy }: { value?: string; onCopy?: () => void }) => {
@@ -13,7 +15,7 @@ export const useCopyValue = ({ value, onCopy }: { value?: string; onCopy?: () =>
     if (!value) return;
 
     setCopied(true);
-    navigator.clipboard.writeText(value);
+    copyToClipboard(value);
     setTimeout(() => setCopied(false), MODERATE_DEBOUNCE_MS);
     onCopy?.();
   };

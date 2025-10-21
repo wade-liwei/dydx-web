@@ -16,6 +16,7 @@ import { Button } from '@/components/Button';
 import { Icon, IconName } from '@/components/Icon';
 import { QrCode } from '@/components/QrCode';
 
+import { copyToClipboard } from '@/lib/copy';
 import { truncateAddress } from '@/lib/wallet';
 
 export const QrDeposit = ({ disabled }: { disabled: boolean }) => {
@@ -27,7 +28,7 @@ export const QrDeposit = ({ disabled }: { disabled: boolean }) => {
     if (!nobleAddress || nobleAddress.trim() === '') return;
 
     setIsCopied(true);
-    navigator.clipboard.writeText(nobleAddress);
+    copyToClipboard(nobleAddress);
     setTimeout(() => setIsCopied(false), MODERATE_DEBOUNCE_MS);
   };
 

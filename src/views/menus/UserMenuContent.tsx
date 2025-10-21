@@ -27,6 +27,7 @@ import { getOnboardingState } from '@/state/accountSelectors';
 import { useAppDispatch, useAppSelector } from '@/state/appTypes';
 import { openDialog } from '@/state/dialogs';
 
+import { copyToClipboard } from '@/lib/copy';
 import { isTruthy } from '@/lib/isTruthy';
 import { orEmptyObj } from '@/lib/typeUtils';
 import { truncateAddress } from '@/lib/wallet';
@@ -58,12 +59,12 @@ export const UserMenuContent = () => {
     if (walletDisplay === 'chain') {
       if (!dydxAddress) return;
       setCopied(true);
-      navigator.clipboard.writeText(dydxAddress);
+      copyToClipboard(dydxAddress);
       setTimeout(() => setCopied(false), MODERATE_DEBOUNCE_MS);
     } else {
       if (!address) return;
       setCopied(true);
-      navigator.clipboard.writeText(address);
+      copyToClipboard(address);
       setTimeout(() => setCopied(false), MODERATE_DEBOUNCE_MS);
     }
   };

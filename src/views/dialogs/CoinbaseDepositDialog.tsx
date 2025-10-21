@@ -14,6 +14,8 @@ import { Dialog } from '@/components/Dialog';
 import { GreenCheckCircle } from '@/components/GreenCheckCircle';
 import { QrCode } from '@/components/QrCode';
 
+import { copyToClipboard } from '@/lib/copy';
+
 const THREE_SECOND_DELAY = 3000;
 export const CoinbaseDepositDialog = ({
   onBack,
@@ -27,7 +29,7 @@ export const CoinbaseDepositDialog = ({
     if (!nobleAddress) return;
 
     setShowCopyLogo(false);
-    navigator.clipboard.writeText(nobleAddress);
+    copyToClipboard(nobleAddress);
     setTimeout(() => setShowCopyLogo(true), THREE_SECOND_DELAY);
   };
 
