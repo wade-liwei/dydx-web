@@ -8,8 +8,10 @@
     "node": "=20"
   },
   "scripts": {
-    "dev": "cp ./template.html ./index.html && vite",
-    "build": "pnpm run build:set-last-commit-and-tag && pnpm run build:generate-entry-points && tsc && NODE_OPTIONS='--max-old-space-size=6144' vite build",
+    "dev": "cp ./template.html ./index.html && vite --mode development",
+    "build": "pnpm run build:set-last-commit-and-tag && pnpm run build:generate-entry-points && tsc && NODE_OPTIONS='--max-old-space-size=6144' vite build --mode production",
+    "build:dev": "pnpm run build:set-last-commit-and-tag && pnpm run build:generate-entry-points && tsc && NODE_OPTIONS='--max-old-space-size=6144' vite build --mode development",
+    "build:testnet": "pnpm run build:set-last-commit-and-tag && pnpm run build:generate-entry-points && tsc && NODE_OPTIONS='--max-old-space-size=6144' vite build --mode testnet",
     "build:inject-app-deeplinks": "sh scripts/inject-app-deeplinks.sh",
     "build:inject-amplitude": "node scripts/inject-amplitude.js",
     "build:inject-google-tag-manager": "node scripts/inject-google-tag-manager.js",

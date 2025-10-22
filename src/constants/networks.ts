@@ -2,7 +2,9 @@ import environments from '../../public/configs/v1/env.json';
 
 type Mode = 'MAINNET' | 'TESTNET' | 'DEV';
 
-const mode = import.meta.env.MODE;
+const mode = import.meta.env.VITE_MODE as 'production' | 'testnet' | 'staging' | 'development';
+
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 export const CURRENT_MODE = ({
   production: 'MAINNET',
   testnet: 'TESTNET',
@@ -24,6 +26,7 @@ export type DydxChainId = keyof typeof TOKEN_CONFIG_MAP;
 export const DEFAULT_APP_ENVIRONMENT = AVAILABLE_ENVIRONMENTS.default as DydxNetwork;
 
 // 这里是 statsig 的环境
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 export const STATSIG_ENVIRONMENT_TIER = ({
   production: 'production',
   testnet: 'staging',
